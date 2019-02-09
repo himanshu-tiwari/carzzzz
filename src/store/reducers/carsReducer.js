@@ -176,11 +176,38 @@ const initState = {
             "Transmission": "Manual",
             "Car_Type": "Hatchback"
         }
-    ]
+    ],
+    filters: {
+        location: '',
+        startDate: "",
+        transmissionType: '',
+        carType: '',
+        fuel: ''
+    },
+    order: 1,
+    limit: 6
 };
 
 const carReducer = (state= initState, action) => {
     switch(action.type) {
+        case 'FILTER_CARS':
+            return {
+                ...state,
+                filters: {
+                    ...state.filters,
+                    ...action.data
+                }
+            }
+        case 'CHANGE_LIMIT_OF_CARS':
+            return {
+                ...state,
+                limit: action.data
+            }
+        case 'SORT_CARS':
+            return {
+                ...state,
+                order: action.data
+            }
         default:
             return initState;
     }
