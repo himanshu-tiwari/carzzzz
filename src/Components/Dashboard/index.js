@@ -1,10 +1,9 @@
 import React from 'react';
 import Navbar from './Navbar';
-import { Redirect } from 'react-router-dom';
 import './index.scss';
 
 const Dashboard = (props) => {
-    if (!props.children) return <Redirect to={`/`} />
+    if (!props.children) props.history.push('/');
 
     return(
         <div className="dashboard">
