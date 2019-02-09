@@ -1,0 +1,52 @@
+.landing {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // height: 100%;
+    padding: 1rem;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem 2rem 1rem 2rem;
+        background: #fff;
+        color: #000;
+        border: 1px solid #DEDEDE;
+        box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.25);
+        max-width: 100%;
+
+        .heading {
+            font-size: 2rem;
+            margin-top: 0;
+            font-weight: 500;
+        }
+
+        .label {
+            font-size: 1.25rem;
+            text-align: left;
+            width: 100%;
+            font-weight: 500;
+            color: #151515;
+            margin-bottom: 0.75rem;
+        }
+
+        input, select {
+            width: 100%;
+        }
+        input {
+            width: calc(100% - 1rem);
+        }
+        select {
+            height: 3rem;
+        }
+
+        button {
+            width: 100%;
+            background: #36C626;
+            border: 1px solid #36C626 !important;
+            color: #fff;
+        }
+    }
+}
