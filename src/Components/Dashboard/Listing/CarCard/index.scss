@@ -12,6 +12,8 @@
         align-items: center;
         margin-bottom: 3rem;
         max-width: 100%;
+        position: relative;
+        cursor: pointer;
 
         .name {
             font-size: 1.25rem;
@@ -57,19 +59,50 @@
         }
     }
     .car-card.unavailable {
-        position: relative;
+        cursor: not-allowed;
     }
-    .car-card.unavailable::before {
-        content: 'Unavailable';
+    .car-card::after {
         position: absolute;
         bottom: 4rem;
-        right: 0;
-        left: 0;
-        background: #FF5858;
         color: #fff;
         text-align: center;
         font-size: 1rem;
         font-weight: 500;
         padding: 0.5rem;
+    }
+    .car-card::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+        font-size: 2rem;
+        border-bottom-right-radius: 6px;
+        padding: 0.2rem 0.25rem;
+    }
+
+    .car-card.unselected::after {
+        content: 'Select';
+        background: #36C626;
+        border: 1px solid #36C626;
+        cursor: pointer;
+        border-radius: 2px;
+        right: 0;
+        left: 0;
+    }
+
+    .car-card.selected::before {
+        content: '\2713';
+        background: #36C626;
+        color: #fff;
+    }
+
+    .car-card.unavailable::before {
+        cursor: dis
+    }
+    .car-card.unavailable::after {
+        content: 'Unavailable';
+        background: #FF5858;
+        right: 0;
+        left: 0;
     }
 }

@@ -5,12 +5,33 @@ import { ReactComponent as GPS } from '../../../../assets/images/icons/placehold
 import { ReactComponent as Steering } from '../../../../assets/images/icons/steering-wheel.svg';
 import { ReactComponent as Rupee } from '../../../../assets/images/icons/rupee.svg';
 import { ReactComponent as Seat } from '../../../../assets/images/icons/baby-car-seat.svg';
+import { toggleSelect } from '../../../../store/actions/carsActions';
+import { connect } from 'react-redux';
 
 const CarCard = (props) => {
-    const { Name, Photo, Location, Seats, Fuel_Type, Transmission, Car_Type, available, Price } = props;
+    const {
+        Name,
+        Photo,
+        Location,
+        Seats,
+        Fuel_Type,
+        Transmission,
+        available,
+        Price,
+        selected,
+        toggleSelect
+    } = props;
+
     return(
         <div className="car-card-container">
-            <div className={`car-card ${ available || 'unavailable'}`}>
+            <div
+                className={`car-card ${ available ? selected ? 'selected' : 'unselected' : 'unavailable'}`}
+                onClick={() => {
+                    if (available) {
+                        return toggleSelect(Name);
+                    }
+                }}
+            >
                 <div className="specs specs-1">
                     <p>
                         <GPS />
@@ -22,6 +43,7 @@ const CarCard = (props) => {
                         { Transmission }
                     </p>
                 </div>
+
                 <h3 className="name">{ Name }</h3>
                 <img src={Photo} alt={Name} />
 
@@ -47,4 +69,10 @@ const CarCard = (props) => {
     );
 };
 
-export default CarCard;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        toggleSelect: (name) => dispatch(toggleSelect(name))
+    };
+};
+
+export default connect(null, mapDispatchToProps)(CarCard);

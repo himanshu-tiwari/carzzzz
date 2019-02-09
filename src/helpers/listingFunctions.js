@@ -1,6 +1,3 @@
-import React from 'react';
-import CarCard from "../Components/Dashboard/Listing/CarCard";
-
 export const filterCars = (cars, location, transmissionType, carType, fuel) => cars
     .filter(car => {
         let filterValue = car.Location === location;
@@ -27,11 +24,3 @@ export const sortCars = (cars, order) => {
         return cars.sort((a, b) => a.Price - b.Price).reverse();
     }
 }
-
-export const listCars = (cars, day) => cars.map((car, i) => <CarCard
-        {...{
-            ...car,
-            available: car.Availability.indexOf(day) > -1
-        }}
-        key={i}
-    />);

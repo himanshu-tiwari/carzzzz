@@ -18,3 +18,10 @@ export const setSortOrder = (data) => {
         data
     };
 };
+
+export const toggleSelect = (data) => {
+    return {
+        type: 'TOGGLE_SELECT',
+        data
+    };
+};

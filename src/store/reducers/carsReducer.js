@@ -60,7 +60,7 @@ const initState = {
             "Photo": "https://jtride-data.s3.ap-south-1.amazonaws.com/uploads/1517236391_1511333933_creta_CARDIMENSION.webp",
             "Price": 1700,
             "Location": "Koramangala",
-            "Availability": ["Mon","Tue", "Wed", "Thu", "Fri"],
+            "Availability": ["Mon","Tue", "Wed", "Thu", "Fri", "Sat"],
             "Seats": 5,
             "Fuel_Type": "Diesel",
             "Transmission": "Manual",
@@ -185,7 +185,8 @@ const initState = {
         fuel: ''
     },
     order: 1,
-    limit: 6
+    limit: 6,
+    selectedCars: ["Hyundai Grand i10"]
 };
 
 const carReducer = (state= initState, action) => {
@@ -208,8 +209,20 @@ const carReducer = (state= initState, action) => {
                 ...state,
                 order: action.data
             }
+        case 'TOGGLE_SELECT':
+            if (state.selectedCars.indexOf(action.data) > -1) {
+                return {
+                    ...state,
+                    selectedCars: [ ...state.selectedCars.filter(car => car !== action.data) ]
+                }
+            } else {
+                return {
+                    ...state,
+                    selectedCars: [ ...state.selectedCars, action.data ]
+                }
+            }
         default:
-            return initState;
+            return state;
     }
 };
 

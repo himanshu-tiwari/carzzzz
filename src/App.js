@@ -8,7 +8,7 @@ import Dashboard from './Components/Dashboard';
 
 class App extends Component {
 	render() {
-		const { cars, filters, limit, setFilter, changeLimit, order, setSortOrder } = this.props;
+		const { cars, filters, limit, setFilter, changeLimit, order, setSortOrder, selectedCars } = this.props;
 		
 		return (
 			<div className="App">
@@ -36,7 +36,8 @@ class App extends Component {
 										viewMore: () => changeLimit(Number(limit) + 3),
 										order,
 										setFilter,
-										setSortOrder
+										setSortOrder,
+										selectedCars
 									}
 								} />
 							</Dashboard>
@@ -49,13 +50,14 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-	const { cars, filters, limit, order } = state.cars;
+	const { cars, filters, limit, order, selectedCars } = state.cars;
 
 	return {
 		cars,
 		filters,
 		limit,
-		order
+		order,
+		selectedCars
 	}
 };
 
