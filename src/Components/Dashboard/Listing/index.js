@@ -5,6 +5,7 @@ import { ReactComponent as Down } from '../../../assets/images/icons/arrow-point
 import { filterCars, limitCars, sortCars } from '../../../helpers/listingFunctions';
 import SortNfilter from './SortNFilter';
 import { listCars } from '../../../helpers/partialViews';
+import { Redirect } from 'react-router-dom';
 
 class Listing extends Component {
     state = {
@@ -15,7 +16,7 @@ class Listing extends Component {
         const { limit, cars, filters, viewMore, order, setFilter, setSortOrder, selectedCars } = this.props;
         const { location, startDate, transmissionType, carType, fuel } = filters;
         
-        if (!location.length || !startDate.length) this.props.history.push('/');
+        if (!location.length || !startDate.length) return <Redirect to='/' />;
 
         const filteredCars = filterCars(cars, location, transmissionType, carType, fuel);
         return(
